@@ -1,6 +1,7 @@
 package com.jx372.springex.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,5 +27,11 @@ public class BoardController {
 		/* 권장  @RequestParam( "name" ) String name */
 		System.out.println( "name:" + name );
 		return "BoardController:update";
-	}	
+	}
+	
+	@ResponseBody
+	@RequestMapping( "/view/{no}" )
+	public String view( @PathVariable( value="no" ) Long no ) {
+		return "BoardController:view(" + no + ")";
+	}
 }
