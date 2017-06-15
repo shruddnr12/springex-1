@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HelloController {
 	
-	@RequestMapping( "/hello" )
+	@RequestMapping( "/hello2" )
 	public String hello() {
 		return "/WEB-INF/views/hello.jsp";
 	}
@@ -40,12 +40,9 @@ public class HelloController {
 	
 	/* 기술이 침투 했기 때문에 비추천 */
 	@RequestMapping( "/hello4" )
-	public void hello4( HttpServletRequest request, Writer out){
+	public void hello4( HttpServletRequest request, Writer out) 
+		throws IOException {
 		String name = request.getParameter( "name" );
-		try {
-			out.write( "<h1>Hello " + name + "</h1>" );
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		out.write( "<h1>Hello " + name + "</h1>" );
 	}
 }
